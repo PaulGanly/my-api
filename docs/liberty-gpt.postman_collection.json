@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "85ab1641-d027-447a-ba22-d306e1b83ff3",
+		"name": "Liberty GPT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3225402"
+	},
+	"item": [
+		{
+			"name": "Direct call",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{libertyGPTAccess}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messages\": [\n        {\n            \"content\": \"Given this method: public addNumbers(a: number, b: number): number { const value = a + b; if(value < 0) { return 0 } else { return value > 99 ? 100 : value;}}   Using boundary value analysis and equivalence partitioning produce a parameterised jest unit test that covers all valid scenarios. Please return just the code, no extra text\",\n            \"role\": \"user\"\n        }\n    ],\n    \"use_case\": \"testing\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cortex.aws.lmig.com/rest/v2/azure/openai/deployments/GPT_35_TURBO/chat/completions?api-version=2023-05-15",
+					"protocol": "https",
+					"host": [
+						"cortex",
+						"aws",
+						"lmig",
+						"com"
+					],
+					"path": [
+						"rest",
+						"v2",
+						"azure",
+						"openai",
+						"deployments",
+						"GPT_35_TURBO",
+						"chat",
+						"completions"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2023-05-15"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clone repo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"repoUrl\": \"https://github.com/PaulGanly/npm-testing-app\",\n    \"name\": \"npm-testing-app\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/repo/clone",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"repo",
+						"clone"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AutoAI Generate Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"public addNumbers(a: number, b: number): number { const value = a + b; if(value < 0) { return 0 } else { return value > 99 ? 100 : value;}}\",\n    \"type\": \"typescript\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/generate-test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"generate-test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Maven Build",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"repoUrl\": \"https://github.com/PaulGanly/testing-app\",\n    \"name\": \"testing-app\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/mvn/install",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mvn",
+						"install"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Npm Install",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"repoUrl\": \"https://github.com/PaulGanly/testing-app\",\n    \"name\": \"testing-app\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/mvn/install",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mvn",
+						"install"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
